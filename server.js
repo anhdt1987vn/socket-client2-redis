@@ -42,10 +42,13 @@ server.register(require('inert'), function(err){
 socket.on('io:welcome', function(data){
   console.log(data);
   socket.emit('io:name', 'Freeman');
-  //socket.emit('io:message', { 'myid':data.yourID,'did': data.mngID,'t':'XinChaoMoinguoi'});
+  socket.emit('io:message', { 'myid':data.yourID,'did': data.mngID,'t':'XinChaoMoinguoi'});
   //socket.emit('io:message', {'did':'U9358lFCuBe4RGgfAAAA','t':'ChaoBan'});
 });
 
+socket.on('newuser', function(rs){
+  console.log('From Client 2___ ' + rs);
+});
 
 socket.on('chat:messages:latest', function(msg){
   console.log(msg.t);
